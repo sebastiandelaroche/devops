@@ -1,0 +1,15 @@
+{
+  "name": "devops",
+  "version": "1.0.0",
+  "description": "devops experiment",
+  "main": "src/bin/www",
+  "repository": "https://github.com/sebastiandelaroche/devops.git",
+  "author": "sebastianroche17@gmail.com",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/bin/www"
+  },
+  "dependencies": {
+    "express": "4.16.3"
+  }
+}
