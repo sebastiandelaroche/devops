@@ -1,11 +1,9 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/node:8.9.4
-    working_directory: ~/repo
     machine: true
     steps:
       - checkout
       - run: docker build -t devops .
       - run: docker run devops:latest npm test
+      - run: sh deployments/qa.sh
