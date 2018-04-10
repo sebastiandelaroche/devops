@@ -4,5 +4,5 @@ jobs:
     machine: true
     steps:
       - checkout
-      - run: docker build -t devops ../Dockerfile
+      - run: docker build -t devops .
       - run: docker run -p 3000:3000 devops:latest npm test
