@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-    res.send('Hi world !');
+    res.send('Hi world from devops professional !');
 });
 
 module.exports = app;
