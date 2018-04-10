@@ -1,0 +1,8 @@
+version: 2
+jobs:
+  build:
+    machine: true
+    steps:
+      - checkout
+      - run: docker build -t devops ../Dockerfile
+      - run: docker run -p 3000:3000 devops:latest npm test
