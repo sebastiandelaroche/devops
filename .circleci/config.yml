@@ -9,8 +9,8 @@ jobs:
       - run: docker build -t devops .
       - run: docker run devops:latest npm test
 
-      deploy:
-        machine: true
-        steps:
-          - checkout
-          - run: sh .circleci/deployments/qa.sh
+  deploy:
+    machine: true
+    steps:
+      - checkout
+      - run: sh .circleci/deployments/qa.sh
