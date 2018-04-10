@@ -5,4 +5,4 @@ jobs:
     steps:
       - checkout
       - run: docker build -t devops .
-      - run: docker run -p 3000:3000 devops:latest npm test
+      - run: docker run devops:latest npm test
