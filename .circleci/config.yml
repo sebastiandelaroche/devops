@@ -1,8 +1,16 @@
 version: 2
 jobs:
   build:
+    docker:
+      - image: circleci/node:8
     machine: true
     steps:
       - checkout
       - run: docker build -t devops .
       - run: docker run devops:latest npm test
+
+      deploy:
+        machine: true
+        steps:
+          - checkout
+          - run: sh .circleci/deployments/qa.sh
