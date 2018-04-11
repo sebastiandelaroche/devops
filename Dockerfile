@@ -7,4 +7,4 @@ COPY . /app/
 
 RUN npm i
 
-CMD ["npm","start"]
+CMD ["npm", "start"]
