@@ -6,17 +6,10 @@ jobs:
       - checkout
       - run: docker build -t devops .
       - run: docker run devops:latest npm test
-
-  deploy:
-    working_directory: ~/
-    docker:
-      - image: circleci/node:8
-    steps:
-      - checkout
       - run: sh deployments/qa.sh
 
 workflows:
   version: 2
   tagged-build:
     jobs:
-      - deploy
+      - build
