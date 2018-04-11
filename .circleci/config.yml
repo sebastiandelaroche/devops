@@ -1,6 +1,11 @@
 version: 2
 jobs:
   build:
-    working_directory: ./
+    working_directory: ~/
     docker:
       - image: circleci/node:8
+    steps:
+      - checkout
+
+      - store_artifacts:
+        path: build
