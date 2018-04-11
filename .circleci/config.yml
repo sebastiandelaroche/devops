@@ -7,9 +7,3 @@ jobs:
       - run: docker build -t devops .
       - run: docker run devops:latest npm test
       - run: sh deployments/qa.sh
-
-workflows:
-  version: 2
-  tagged-build:
-    jobs:
-      - build
