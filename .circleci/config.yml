@@ -7,5 +7,8 @@ jobs:
     steps:
       - checkout
 
-      - store_artifacts:
-        path: build
+workflows:
+  version: 2
+  tagged-build:
+    jobs:
+      - build
