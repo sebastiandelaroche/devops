@@ -1,4 +1,4 @@
-sudo npm install now -g
+npm install now -g
 echo "deploying..."
 URL=$(now --docker -t $NOW_TOKEN)
 echo "running acceptance on $URL"
