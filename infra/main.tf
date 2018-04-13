@@ -25,12 +25,20 @@ resource "digitalocean_tag" "devops" {
 
 resource "digitalocean_droplet" "devops" {
   count    = 2
-  image    = "33397121"
+  image    = "${var.image_id}"
   name     = "devops"
   region   = "nyc1"
   size     = "512mb"
   ssh_keys = [19927153]
   tags     = ["${digitalocean_tag.devops.id}"]
+
+  lifecycle {
+    create_before_destroy = true
+  }
+
+  provisioner "local-exec" {
+    command = "sleep 160 && ${self.ipv4.address}:3000"
+  }
 
   user_data = <<EOF
 #cloud-config
