@@ -10,16 +10,18 @@ jobs:
   deploy-qa:
     machine: true
     steps:
+      - checkout
       - run: sh .circleci/deployments/qa.sh
 
   deploy-prod:
     machine: true
     steps:
+      - checkout
       - run: sh .circleci/deployments/prod.sh
 
 workflows:
   version: 2
-  build-and-deploy:
+  central_flow:
     jobs:
       - build
       - deploy-qa:
