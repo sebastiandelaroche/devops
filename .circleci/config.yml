@@ -6,4 +6,29 @@ jobs:
       - checkout
       - run: docker build -t devops .
       - run: docker run devops:latest npm test
+
+  deploy-qa:
+    steps:
       - run: sh .circleci/deployments/qa.sh
+
+  deploy-prod:
+    steps:
+      - run: sh .circleci/deployments/prod.sh
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy-qa:
+          requires:
+            - build
+          filters:
+            branches:
+              only: /feature-.*/
+      - deploy-prod:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
