@@ -1,11 +1,14 @@
 {
+    "variables": {
+        "build_number": "{{ env `CIRCLE_BUILD_NUM` }"
+    },
     "builders": [
         {
             "type": "digitalocean",
             "image": "coreos-stable",
             "region": "nyc1",
             "size": "512mb",
-            "snapshot_name": "devops-03",
+            "snapshot_name": "devops-{{user `build_number`}}",
             "ssh_username": "core"
         }
     ],
