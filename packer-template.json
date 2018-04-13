@@ -1,6 +1,6 @@
 {
     "variables": {
-        "build_number": "{{ env `CIRCLE_BUILD_NUM` }"
+        "build_number": "{{ env `CIRCLE_BUILD_NUM` }}"
     },
     "builders": [
         {
