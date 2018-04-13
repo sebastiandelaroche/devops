@@ -37,7 +37,7 @@ resource "digitalocean_droplet" "devops" {
   }
 
   provisioner "local-exec" {
-    command = "sleep 160 && ${self.ipv4.address}:3000"
+    command = "sleep 160 && curl ${self.ipv4_address}:3000"
   }
 
   user_data = <<EOF
