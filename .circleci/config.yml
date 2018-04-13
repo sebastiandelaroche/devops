@@ -8,10 +8,12 @@ jobs:
       - run: docker run devops:latest npm test
 
   deploy-qa:
+    machine: true
     steps:
       - run: sh .circleci/deployments/qa.sh
 
   deploy-prod:
+    machine: true
     steps:
       - run: sh .circleci/deployments/prod.sh
 
