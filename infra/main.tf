@@ -1,5 +1,5 @@
 resource "digitalocean_loadbalancer" "devops" {
-  name   = "devops-lb2"
+  name   = "devops-lb"
   region = "nyc1"
 
   forwarding_rule {
