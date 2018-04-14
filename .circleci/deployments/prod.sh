@@ -4,9 +4,8 @@ unzip /tmp/packer.zip -d ~/bin
 unzip /tmp/terraform.zip -d ~/bin
 packer validate packer-template.json &&
 packer build packer-template.json &&
-echo $(curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer $DIGITALOCEAN_API_TOKEN" "https://api.digitalocean.com/v2/images?private=true")
-# export TF_VAR_image_id=$(curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer $DIGITALOCEAN_API_TOKEN" "https://api.digitalocean.com/v2/images?private=true" | jq ."images[] | select(.name == \"devops-$CIRCLE_BUILD_NUM\") | .id")
-# echo "image_id: $TF_VAR_image_id"
-# cd infra && terraform apply && cd.. &&
-# git add infra && git commit -am "Deployed $CIRCLE_BUILD_NUM [skip ci]" &&
-# git push origin master
+export TF_VAR_image_id=$(curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer $DIGITALOCEAN_API_TOKEN" "https://api.digitalocean.com/v2/images?private=true" | jq ."images[] | select(.name == \"devops-$CIRCLE_BUILD_NUM\") | .id")
+echo "image_id: $TF_VAR_image_id"
+cd infra && terraform init -input=false && terraform apply -input=false -auto-approve && cd.. &&
+git add infra && git commit -am "Deployed $CIRCLE_BUILD_NUM [skip ci]" &&
+git push origin master
