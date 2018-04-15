@@ -10,7 +10,7 @@ export TF_VAR_image_id=$(curl -X GET -H "Content-Type: application/json" -H "Aut
 echo "image_id: $TF_VAR_image_id"
 
 cd infra && terraform init -input=false &&
-terraform apply -input=false -auto-approve && cd.. &&
+terraform apply -input=false -auto-approve && cd .. &&
 git config --global user.email "aspadevs@gmail.com" &&
 git config --global user.name "sebastiandelaroche" &&
 git add infra && git commit -m "Deployed $CIRCLE_BUILD_NUM [skip ci]" &&
