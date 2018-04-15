@@ -5,8 +5,10 @@ unzip /tmp/terraform.zip -d ~/bin
 packer validate packer-template.json &&
 packer build packer-template.json &&
 export TF_VAR_image_id=$(curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer $DIGITALOCEAN_API_TOKEN" "https://api.digitalocean.com/v2/images?private=true" | jq ."images[] | select(.name == \"devops-$CIRCLE_BUILD_NUM\") | .id")
+export XXX=123
 echo "image_id: $TF_VAR_image_id"
-echo "DIGITALOCEAN_API_TOKEN: $DIGITALOCEAN_API_TOKEN"
+echo "XXX: $XXX"
+echo "CIRCLE_BUILD_NUM: $CIRCLE_BUILD_NUM"
 cd infra && terraform init -input=false && terraform apply -input=false -auto-approve && cd.. &&
 git add infra && git commit -am "Deployed $CIRCLE_BUILD_NUM [skip ci]" &&
 git push origin master
