@@ -5,7 +5,7 @@ unzip /tmp/terraform.zip -d ~/bin
 
 packer validate packer-template.json &&
 packer build packer-template.json &&
-export TF_VAR_image_id=$(curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer $DIGITALOCEAN_API_TOKEN" "https://api.digitalocean.com/v2/images?private=true" | jq ."images[] | select(.name == \"devops-80\") | .id")
+export TF_VAR_image_id=$(curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer $DIGITALOCEAN_API_TOKEN" "https://api.digitalocean.com/v2/images?private=true" | jq ."images[] | select(.name == \"devops-$CIRCLE_BUILD_NUM\") | .id")
 
 echo "image_id: $TF_VAR_image_id"
 
