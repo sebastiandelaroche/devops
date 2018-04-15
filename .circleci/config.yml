@@ -17,6 +17,9 @@ jobs:
     machine: true
     steps:
       - checkout
+      - add_ssh_keys:
+        fingerprints:
+          - "12:1e:1f:59:af:f5:57:6e:3e:c6:4a:b2:96:d8:20:09"
       - run: sh .circleci/deployments/prod.sh
 
 workflows:
